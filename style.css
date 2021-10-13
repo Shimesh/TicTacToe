@@ -32,6 +32,7 @@ body {
   justify-content: center;
   align-items: center;
   position: relative;
+  cursor: pointer;
 }
 
 .cell:first-child,
@@ -52,6 +53,11 @@ body {
 .cell:nth-child(7),
 .cell:nth-child(8) {
   border-bottom: none;
+}
+
+.cell.x,
+.cell.circle {
+  cursor: not-allowed;
 }
 
 .cell.x::before,
