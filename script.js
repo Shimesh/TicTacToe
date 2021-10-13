@@ -14,8 +14,13 @@ function handleClick(e) {
   //Check For Win
   //Check For Draw
   //Switch Turns
+  swapTurns();
 }
 
 function placeMark(cell, currentClass) {
   cell.classList.add(currentClass);
+}
+
+function swapTurns() {
+  circleTurn = !circleTurn;
 }
