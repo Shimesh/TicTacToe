@@ -1,5 +1,15 @@
 const X_CLASS = "x";
 const Circle_CLASS = "circle";
+const WINNING_COMBINATIONS = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
+];
 const cellElements = document.querySelectorAll("[data-cell]");
 const board = document.getElementById("board");
 let circleTurn;
@@ -18,6 +28,9 @@ function handleClick(e) {
   const cell = e.target;
   const currentClass = circleTurn ? Circle_CLASS : X_CLASS;
   placeMark(cell, currentClass);
+  if (checkWin(currentClass)) {
+    console.log("winner");
+  }
   //Check For Win
   //Check For Draw
   //Switch Turns
@@ -41,4 +54,12 @@ function setBoardHoverClass() {
   } else {
     board.classList.add(X_CLASS);
   }
+}
+
+function checkWin(currentClass) {
+  return WINNING_COMBINATIONS.some((combiniation) => {
+    return combiniation.every((index) => {
+      return cellElements[index].classList.contains(currentClass);
+    });
+  });
 }
